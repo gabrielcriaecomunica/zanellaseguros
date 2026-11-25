@@ -6,6 +6,7 @@ import { SectionWaves } from "@/components/SectionWaves";
 import { Timeline } from "@/components/Timeline";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { CorretorCard } from "@/components/CorretorCard";
+import { SeguradorasSection } from "@/components/SeguradorasSection";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { CTASection } from "@/components/CTASection";
 
@@ -165,6 +166,8 @@ export default function SobrePage() {
           </div>
         </div>
       </section>
+
+      <SeguradorasSection variant="white" />
 
       <section className="bg-creme-suave py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

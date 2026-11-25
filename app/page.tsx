@@ -15,6 +15,7 @@ import { SegurosTabs } from "@/components/SegurosTabs";
 import { Timeline } from "@/components/Timeline";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { CorretorCard } from "@/components/CorretorCard";
+import { SeguradorasSection } from "@/components/SeguradorasSection";
 import { CTASection } from "@/components/CTASection";
 
 const PASSOS_CONSULTIVOS = [
@@ -236,6 +237,8 @@ export default function HomePage() {
       </section>
 
       <SectionWaves variant="green" position="divider" />
+
+      <SeguradorasSection variant="cream" />
 
       {/* 4. SEGUROS POR PERFIL */}
       <section className="bg-creme-suave py-16 sm:py-24">

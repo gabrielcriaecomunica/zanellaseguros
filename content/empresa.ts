@@ -122,6 +122,38 @@ export const EMPRESA = {
       fotoPosition: "object-[50%_75%]",
     },
   ],
+  seguradorasParceiras: [
+    {
+      nome: "Alfa Seguros",
+      logo: "/images/seguradoras/alfa-seguros.png",
+      width: 138,
+      height: 68,
+    },
+    {
+      nome: "MetLife",
+      logo: "/images/seguradoras/metlife.png",
+      width: 80,
+      height: 92,
+    },
+    {
+      nome: "Tokio Marine Seguradora",
+      logo: "/images/seguradoras/tokio-marine.png",
+      width: 106,
+      height: 93,
+    },
+    {
+      nome: "HDI Seguros",
+      logo: "/images/seguradoras/hdi-seguros.png",
+      width: 98,
+      height: 64,
+    },
+    {
+      nome: "MAPFRE",
+      logo: "/images/seguradoras/mapfre.png",
+      width: 130,
+      height: 70,
+    },
+  ],
   depoimentosPlaceholders: [
     {
       id: "depoimento-1",
