@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { EMPRESA } from "@/content/empresa";
 import { MODALIDADES_SEGURO } from "@/content/seguros";
-import { getAllArtigos } from "@/lib/artigos";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = EMPRESA.siteUrl;
@@ -13,7 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/seguros",
     "/empresas",
     "/nautico",
-    "/conteudos",
     "/contato",
     "/politica-de-privacidade",
   ].map((route) => ({
@@ -32,12 +30,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  const artigoRoutes: MetadataRoute.Sitemap = getAllArtigos().map((a) => ({
-    url: `${baseUrl}/conteudos/${a.slug}`,
-    lastModified: new Date(a.date),
-    changeFrequency: "monthly",
-    priority: 0.65,
-  }));
-
-  return [...staticRoutes, ...modalidadeRoutes, ...artigoRoutes];
+  return [...staticRoutes, ...modalidadeRoutes];
 }

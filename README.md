@@ -25,7 +25,6 @@ npm run start
   - Para atualizar horário de atendimento, SUSEP, razão social e depoimentos reais, edite os campos correspondentes em `EMPRESA`.
 - **Modalidades de seguros e consórcios:** [content/seguros.ts](content/seguros.ts)
   - Todos os textos de abertura, listas, ressalvas, perguntas frequentes e mensagens pré-preenchidas de WhatsApp estão centralizados neste arquivo, sem necessidade de editar componentes visuais.
-- **Artigos educativos (Conteúdos):** pasta [content/artigos](content/artigos) em formato `.mdx`.
 - **Identidade visual e cores:** variáveis CSS em [app/globals.css](app/globals.css) (`--verde-profundo`, `--creme`, `--dourado-areia`, `--branco`, `--texto`).
 - **Logo e fotos:** arquivos na pasta `public/images/` (logo atual em `public/images/logo-zanella.png`). Os espaços de fotografia estão marcados com o componente `PhotoPlaceholder` para substituição por `<Image />` com as fotos reais da Zanella.
 

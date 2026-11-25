@@ -88,14 +88,6 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/conteudos"
-                  className="hover:text-branco hover:underline"
-                >
-                  Conteúdos
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/contato"
                   className="hover:text-branco hover:underline"
                 >

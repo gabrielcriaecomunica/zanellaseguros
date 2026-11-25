@@ -8,7 +8,6 @@ import {
   Quote,
 } from "lucide-react";
 import { EMPRESA, buildWhatsAppUrl } from "@/content/empresa";
-import { getAllArtigos } from "@/lib/artigos";
 import { SectionWaves } from "@/components/SectionWaves";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SegurosTabs } from "@/components/SegurosTabs";
@@ -45,8 +44,6 @@ const PASSOS_CONSULTIVOS = [
 ];
 
 export default function HomePage() {
-  const artigos = getAllArtigos().slice(0, 3);
-
   return (
     <>
       {/* 1. HERO */}
@@ -443,77 +440,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9. CONTEÚDOS EDUCATIVOS */}
-      <section className="bg-branco py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <RevealOnScroll>
-            <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-              <div className="max-w-2xl">
-                <span className="text-xs font-semibold tracking-widest text-verde-profundo uppercase">
-                  Conteúdos educativos
-                </span>
-                <h2 className="mt-2 text-3xl font-bold tracking-tight text-verde-profundo sm:text-4xl">
-                  Explicando o universo dos seguros de forma simples
-                </h2>
-              </div>
-              <Link
-                href="/conteudos"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-verde-profundo underline decoration-verde-profundo/40 underline-offset-4 hover:decoration-verde-profundo"
-              >
-                <span>Ver todos os conteúdos</span>
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </div>
-          </RevealOnScroll>
-
-          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {artigos.map((artigo, index) => (
-              <RevealOnScroll key={artigo.slug} delayMs={index * 70}>
-                <article className="flex h-full flex-col overflow-hidden rounded-xl border border-borda-sutil bg-creme-suave transition-shadow hover:shadow-sm">
-                  <PhotoPlaceholder
-                    label={artigo.coverPlaceholder}
-                    aspect="16/9"
-                    className="rounded-none border-0 border-b border-borda-sutil"
-                  />
-                  <div className="flex flex-1 flex-col justify-between p-6">
-                    <div>
-                      <div className="flex items-center justify-between text-xs font-semibold text-verde-profundo uppercase">
-                        <span>{artigo.category}</span>
-                        <span className="font-normal text-texto-suave normal-case">
-                          {artigo.readingTime}
-                        </span>
-                      </div>
-                      <h3 className="mt-3 text-lg font-bold text-verde-profundo">
-                        <Link
-                          href={`/conteudos/${artigo.slug}`}
-                          className="hover:underline"
-                        >
-                          {artigo.title}
-                        </Link>
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-texto-suave">
-                        {artigo.description}
-                      </p>
-                    </div>
-
-                    <div className="mt-5">
-                      <Link
-                        href={`/conteudos/${artigo.slug}`}
-                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-verde-profundo"
-                      >
-                        <span>Ler artigo</span>
-                        <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-              </RevealOnScroll>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 10. CTA FINAL */}
+      {/* 9. CTA FINAL */}
       <CTASection />
     </>
   );

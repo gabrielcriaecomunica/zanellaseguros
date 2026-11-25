@@ -191,9 +191,6 @@ export function Header() {
           <Link href="/nautico" className={navLinkClass("/nautico")}>
             Náutico
           </Link>
-          <Link href="/conteudos" className={navLinkClass("/conteudos")}>
-            Conteúdos
-          </Link>
           <Link href="/contato" className={navLinkClass("/contato")}>
             Contato
           </Link>
@@ -304,12 +301,6 @@ export function Header() {
               className="block rounded-lg px-3 py-2.5 text-base font-medium text-verde-profundo hover:bg-creme"
             >
               Náutico
-            </Link>
-            <Link
-              href="/conteudos"
-              className="block rounded-lg px-3 py-2.5 text-base font-medium text-verde-profundo hover:bg-creme"
-            >
-              Conteúdos
             </Link>
             <Link
               href="/contato"
