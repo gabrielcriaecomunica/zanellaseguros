@@ -36,7 +36,7 @@ const PASSOS_CONSULTIVOS = [
     numero: "03",
     titulo: "Orientação clara, sem jargões",
     descricao:
-      "Explicamos coberturas, franquias, limites e ressalvas de forma direta para você decidir com segurança.",
+      "Explicamos tudo de forma direta, para você saber exatamente o que está contratando.",
   },
   {
     numero: "04",
@@ -45,6 +45,9 @@ const PASSOS_CONSULTIVOS = [
       "O relacionamento continua durante toda a vigência para revisar apólices, tirar dúvidas e adaptar proteções quando sua vida ou empresa mudam.",
   },
 ];
+
+// Ative para exibir os depoimentos no desktop assim que os reais forem inseridos
+const SHOW_TESTIMONIALS = false;
 
 export default function HomePage() {
   return (
@@ -89,13 +92,13 @@ export default function HomePage() {
               {EMPRESA.frasesMarca.heroApoio}
             </p>
 
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-creme/90 sm:text-base">
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-creme/90 sm:text-base lg:hidden">
               Atendimento humano e independente em Itajaí, Balneário Camboriú e
               todo o Brasil. Conectamos duas gerações da mesma família com a
               força das principais seguradoras do país.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4 lg:mt-6">
               <a
                 href={buildWhatsAppUrl()}
                 target="_blank"
@@ -130,7 +133,7 @@ export default function HomePage() {
         aria-label="Diferenciais de confiança da Zanella Seguros"
         className="border-b border-borda-sutil bg-creme"
       >
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-7 sm:px-6 lg:grid-cols-4 lg:px-8">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-7 sm:px-6 lg:max-w-5xl lg:grid-cols-3 lg:justify-items-center lg:px-8">
           <div className="flex items-start gap-3">
             <CheckCircle2
               className="mt-0.5 h-5 w-5 shrink-0 text-verde-profundo"
@@ -177,7 +180,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="flex items-start gap-3">
+          <div className="flex items-start gap-3 lg:hidden">
             <CheckCircle2
               className="mt-0.5 h-5 w-5 shrink-0 text-verde-profundo"
               strokeWidth={1.75}
@@ -211,7 +214,7 @@ export default function HomePage() {
               <h2 className="relative mt-2 text-3xl font-bold tracking-tight text-verde-profundo sm:text-4xl">
                 {EMPRESA.frasesMarca.fraseOuvir}
               </h2>
-              <p className="relative mt-3 text-base font-light italic text-texto-suave sm:text-lg">
+              <p className="relative mt-3 text-base font-light italic text-texto-suave sm:text-lg lg:hidden">
                 {EMPRESA.frasesMarca.fraseFuturo}
               </p>
             </div>
@@ -310,7 +313,7 @@ export default function HomePage() {
               conhece a cultura náutica do litoral catarinense.
             </p>
 
-            <p className="mt-4 text-sm leading-relaxed text-creme/90 sm:text-base">
+            <p className="mt-4 text-sm leading-relaxed text-creme/90 sm:text-base lg:hidden">
               Estar em um dos principais polos náuticos do Brasil nos permite
               entender de perto a rotina das marinas, dos passeios de fim de
               semana e dos cuidados que cada embarcação pede, conforme as
@@ -320,7 +323,7 @@ export default function HomePage() {
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
                 href="/nautico"
-                className="inline-flex items-center gap-2 rounded-lg bg-dourado-areia px-6 py-3 text-sm font-bold text-verde-escuro shadow-sm transition-colors hover:bg-creme"
+                className="inline-flex items-center gap-2 rounded-lg bg-dourado-areia px-6 py-3 text-sm font-bold text-verde-escuro shadow-sm transition-colors hover:bg-creme lg:hidden"
               >
                 <span>Conhecer Seguro Náutico</span>
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -331,7 +334,7 @@ export default function HomePage() {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-dourado-areia/65 bg-verde-escuro/55 px-6 py-3 text-sm font-semibold text-branco backdrop-blur-xs transition-colors hover:bg-verde-profundo"
+                className="inline-flex items-center gap-2 rounded-lg border border-dourado-areia/65 bg-verde-escuro/55 px-6 py-3 text-sm font-semibold text-branco backdrop-blur-xs transition-colors hover:bg-verde-profundo lg:border-transparent lg:bg-dourado-areia lg:font-bold lg:text-verde-escuro lg:shadow-sm lg:backdrop-blur-none lg:hover:bg-creme"
               >
                 <span>Falar sobre sua embarcação</span>
               </a>
@@ -340,8 +343,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. HISTÓRIA + MINI LINHA DO TEMPO */}
-      <section className="bg-creme py-16 sm:py-24">
+      {/* 6. HISTÓRIA + MINI LINHA DO TEMPO (MOBILE) */}
+      <section className="bg-creme py-16 sm:py-24 lg:hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
@@ -383,8 +386,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. CORRETORES (VALCIR E AMANDA) */}
-      <section className="bg-branco py-16 sm:py-24">
+      {/* 7. CORRETORES (VALCIR E AMANDA - MOBILE) */}
+      <section className="bg-branco py-16 sm:py-24 lg:hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <RevealOnScroll>
             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
@@ -416,10 +419,74 @@ export default function HomePage() {
         </div>
       </section>
 
-      <SectionWaves variant="green" position="divider" />
+      {/* 6+7 UNIFICADOS NO DESKTOP: 35 ANOS, DUAS GERAÇÕES */}
+      <section className="hidden bg-creme py-20 lg:block">
+        <div className="mx-auto max-w-7xl px-8">
+          <RevealOnScroll>
+            <span className="text-xs font-semibold tracking-widest text-verde-profundo uppercase">
+              Tradição e continuidade
+            </span>
+            <h2 className="mt-2 text-4xl font-bold tracking-tight text-verde-profundo">
+              35 anos, duas gerações
+            </h2>
+          </RevealOnScroll>
 
-      {/* 8. DEPOIMENTOS (PLACEHOLDERS MARCADOS) */}
-      <section className="bg-creme-suave py-16 sm:py-24">
+          <div className="mt-10 grid grid-cols-12 items-start gap-10">
+            <div className="col-span-7 space-y-5">
+              {EMPRESA.corretores.map((corretor, index) => (
+                <RevealOnScroll key={corretor.nome} delayMs={index * 80}>
+                  <CorretorCard {...corretor} tone="white" />
+                </RevealOnScroll>
+              ))}
+            </div>
+
+            <div className="col-span-5 flex flex-col justify-between">
+              <ol className="relative space-y-5 border-l border-verde-profundo/20 pl-7">
+                {EMPRESA.linhaDoTempo
+                  .filter((marco) => marco.ano !== "2026")
+                  .map((marco, index) => (
+                    <li key={marco.ano} className="relative">
+                      <RevealOnScroll delayMs={index * 60}>
+                        <span
+                          aria-hidden="true"
+                          className="absolute -left-[35px] top-4 flex h-3.5 w-3.5 items-center justify-center rounded-full border-2 border-verde-profundo bg-creme"
+                        />
+                        <div className="rounded-xl border border-borda-sutil bg-branco px-5 py-4">
+                          <p className="text-base font-bold text-verde-profundo">
+                            {marco.ano} · {marco.titulo}
+                          </p>
+                        </div>
+                      </RevealOnScroll>
+                    </li>
+                  ))}
+              </ol>
+
+              <div className="mt-8 pl-7">
+                <Link
+                  href="/sobre"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-verde-profundo underline decoration-verde-profundo/40 underline-offset-4 hover:decoration-verde-profundo"
+                >
+                  <span>Conhecer nossa história completa</span>
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <SectionWaves
+        variant="green"
+        position="divider"
+        className={SHOW_TESTIMONIALS ? "" : "lg:hidden"}
+      />
+
+      {/* 8. DEPOIMENTOS (OCULTO NO DESKTOP ENQUANTO HOUVER PLACEHOLDERS) */}
+      <section
+        className={`bg-creme-suave py-16 sm:py-24 ${
+          SHOW_TESTIMONIALS ? "" : "lg:hidden"
+        }`}
+      >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <RevealOnScroll>
             <div className="max-w-2xl">
@@ -459,8 +526,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9. LOCALIZAÇÃO NO GOOGLE MAPS */}
-      <LocalizacaoSection />
+      {/* 9. LOCALIZAÇÃO NO GOOGLE MAPS (APENAS MOBILE NA HOME) */}
+      <div className="lg:hidden">
+        <LocalizacaoSection />
+      </div>
 
       {/* 10. CTA FINAL */}
       <CTASection />

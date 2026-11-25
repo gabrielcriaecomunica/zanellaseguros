@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Mail, MessageCircle, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { EMPRESA, buildWhatsAppUrl } from "@/content/empresa";
 import { SectionWaves } from "@/components/SectionWaves";
 
@@ -59,6 +59,22 @@ export function CTASection({
             <span>{secondaryLabel}</span>
           </Link>
         </div>
+
+        <p className="mt-6 hidden items-center justify-center gap-2 text-xs text-creme/85 lg:flex">
+          <MapPin
+            className="h-3.5 w-3.5 shrink-0 text-dourado-areia"
+            aria-hidden="true"
+          />
+          <a
+            href={EMPRESA.endereco.mapsLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-dourado-areia/45 underline-offset-4 transition-colors hover:text-branco"
+          >
+            {EMPRESA.endereco.logradouro}, {EMPRESA.endereco.bairro},{" "}
+            {EMPRESA.endereco.cidade}/{EMPRESA.endereco.estado}
+          </a>
+        </p>
       </div>
     </section>
   );

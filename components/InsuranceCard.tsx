@@ -7,11 +7,13 @@ import { ModalidadeIcon } from "@/components/ModalidadeIcon";
 interface InsuranceCardProps {
   modalidade: ModalidadeSeguro;
   tone?: "light" | "cream";
+  hideCategoryOnDesktop?: boolean;
 }
 
 export function InsuranceCard({
   modalidade,
   tone = "light",
+  hideCategoryOnDesktop = false,
 }: InsuranceCardProps) {
   return (
     <Link
@@ -29,7 +31,11 @@ export function InsuranceCard({
           <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-borda-sutil bg-creme text-verde-profundo transition-colors group-hover:bg-verde-profundo group-hover:text-branco">
             <ModalidadeIcon name={modalidade.icone} className="h-5 w-5" />
           </span>
-          <span className="text-[11px] font-semibold tracking-wider text-texto-suave uppercase">
+          <span
+            className={`text-[11px] font-semibold tracking-wider text-texto-suave uppercase ${
+              hideCategoryOnDesktop ? "lg:hidden" : ""
+            }`}
+          >
             {modalidade.perfilLabel}
           </span>
         </div>

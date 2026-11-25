@@ -47,8 +47,7 @@ export function SeguradorasSection({
         </div>
 
         <p className="mt-6 text-center text-xs text-texto-suave">
-          Entre outras seguradoras disponíveis pela rede {EMPRESA.redeParceira},
-          conforme a modalidade e os critérios de contratação de cada produto.
+          E outras seguradoras da rede {EMPRESA.redeParceira}.
         </p>
       </div>
     </section>

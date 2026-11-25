@@ -49,13 +49,17 @@ export function SegurosTabs() {
         aria-labelledby={`tab-${ativo}`}
         className="mt-6"
       >
-        <p className="mb-6 max-w-2xl text-sm leading-relaxed text-texto-suave sm:text-base">
+        <p className="mb-6 max-w-2xl text-sm leading-relaxed text-texto-suave sm:text-base lg:hidden">
           {perfilAtual.subtitulo}
         </p>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {modalidades.map((item) => (
-            <InsuranceCard key={item.slug} modalidade={item} />
+            <InsuranceCard
+              key={item.slug}
+              modalidade={item}
+              hideCategoryOnDesktop
+            />
           ))}
         </div>
       </div>

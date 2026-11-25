@@ -109,7 +109,7 @@ export function Footer() {
             <h2 className="text-xs font-bold tracking-wider text-dourado-areia uppercase">
               Modalidades
             </h2>
-            <ul className="mt-4 grid grid-cols-1 gap-2 text-sm sm:grid-cols-2 lg:grid-cols-1">
+            <ul className="mt-4 grid grid-cols-1 gap-2 text-sm sm:grid-cols-2 lg:hidden">
               {MODALIDADES_SEGURO.map((item) => (
                 <li key={item.slug}>
                   <Link
@@ -124,6 +124,38 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+            </ul>
+            <ul className="mt-4 hidden space-y-2.5 text-sm lg:block">
+              {MODALIDADES_SEGURO.filter((item) =>
+                [
+                  "automovel",
+                  "residencial",
+                  "vida",
+                  "empresarial",
+                  "nautico",
+                ].includes(item.slug)
+              ).map((item) => (
+                <li key={item.slug}>
+                  <Link
+                    href={
+                      item.slug === "nautico"
+                        ? "/nautico"
+                        : `/seguros/${item.slug}`
+                    }
+                    className="text-creme/90 hover:text-branco hover:underline"
+                  >
+                    {item.nome}
+                  </Link>
+                </li>
+              ))}
+              <li className="pt-1">
+                <Link
+                  href="/seguros"
+                  className="font-semibold text-dourado-areia underline decoration-dourado-areia/50 underline-offset-4 hover:text-branco"
+                >
+                  Ver todos os seguros
+                </Link>
+              </li>
             </ul>
           </div>
 

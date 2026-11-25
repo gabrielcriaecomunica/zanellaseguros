@@ -69,7 +69,7 @@ export function Header() {
             <span className="text-base font-bold tracking-tight text-verde-profundo">
               Zanella Seguros
             </span>
-            <span className="text-[11px] font-medium text-texto-suave">
+            <span className="text-[11px] font-medium text-texto-suave lg:hidden">
               Itajaí e todo o Brasil
             </span>
           </div>
