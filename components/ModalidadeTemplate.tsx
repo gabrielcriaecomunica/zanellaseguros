@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, MessageCircle, Shield } from "lucide-react";
 import { buildWhatsAppUrl } from "@/content/empresa";
@@ -22,17 +23,39 @@ export function ModalidadeTemplate({
   const relacionadas = modalidade.relacionadas
     .map((slug) => getModalidadeBySlug(slug))
     .filter((item): item is ModalidadeSeguro => Boolean(item));
+  const isNautico = isNauticoLanding || modalidade.slug === "nautico";
 
   return (
     <>
       <section className="relative overflow-hidden bg-verde-profundo py-16 text-branco sm:py-24">
+        {isNautico && (
+          <>
+            <Image
+              src="/images/marina-itajai-entardecer.jpg"
+              alt="Marina de Itajaí ao entardecer com lanchas e veleiros atracados em águas calmas"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-[70%_center] sm:object-center"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-verde-escuro/55 sm:bg-transparent sm:bg-gradient-to-r sm:from-verde-escuro/95 sm:via-verde-profundo/78 sm:to-verde-profundo/20"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-t from-verde-escuro/70 via-transparent to-verde-escuro/30 sm:hidden"
+            />
+          </>
+        )}
+
         <SectionWaves
           variant="gold"
           position="hero"
-          className="absolute inset-x-0 bottom-0 h-48 opacity-85"
+          className="absolute inset-x-0 bottom-0 z-10 h-48 opacity-85"
         />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Link
             href="/seguros"
             className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-dourado-areia uppercase hover:underline"
@@ -41,9 +64,15 @@ export function ModalidadeTemplate({
             <span>Todas as modalidades</span>
           </Link>
 
-          <div className="mt-6 grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2.5 rounded-full border border-dourado-areia/45 bg-verde-escuro/60 px-4 py-1.5 text-xs font-semibold tracking-wider text-dourado-areia uppercase">
+          <div
+            className={`mt-6 ${
+              isNautico
+                ? "max-w-2xl"
+                : "grid grid-cols-1 items-center gap-10 lg:grid-cols-12"
+            }`}
+          >
+            <div className={isNautico ? "" : "lg:col-span-7"}>
+              <div className="inline-flex items-center gap-2.5 rounded-full border border-dourado-areia/45 bg-verde-escuro/70 px-4 py-1.5 text-xs font-semibold tracking-wider text-dourado-areia uppercase backdrop-blur-xs">
                 <ModalidadeIcon
                   name={modalidade.icone}
                   className="h-4 w-4 text-dourado-areia"
@@ -55,16 +84,16 @@ export function ModalidadeTemplate({
                 {modalidade.nome}
               </h1>
 
-              <p className="mt-4 max-w-2xl text-lg font-light italic text-creme/95">
+              <p className="mt-4 max-w-2xl text-lg font-light italic text-creme">
                 {modalidade.subtitulo}
               </p>
 
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-creme/85">
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-creme/90">
                 {modalidade.aberturaCotidiano}
               </p>
 
               {isNauticoLanding && modalidade.destaqueLitoral && (
-                <div className="mt-5 rounded-xl border border-dourado-areia/35 bg-verde-escuro/70 p-4 text-sm leading-relaxed text-creme">
+                <div className="mt-5 rounded-xl border border-dourado-areia/35 bg-verde-escuro/75 p-4 text-sm leading-relaxed text-creme backdrop-blur-xs">
                   {modalidade.destaqueLitoral}
                 </div>
               )}
@@ -81,20 +110,22 @@ export function ModalidadeTemplate({
                 </a>
                 <Link
                   href="/contato"
-                  className="inline-flex items-center gap-2 rounded-lg border border-dourado-areia/50 px-6 py-3.5 text-sm font-semibold text-branco transition-colors hover:bg-verde-medio"
+                  className="inline-flex items-center gap-2 rounded-lg border border-dourado-areia/65 bg-verde-escuro/55 px-6 py-3.5 text-sm font-semibold text-branco backdrop-blur-xs transition-colors hover:bg-verde-profundo"
                 >
                   <span>Tirar uma dúvida</span>
                 </Link>
               </div>
             </div>
 
-            <div className="lg:col-span-5">
-              <PhotoPlaceholder
-                label={modalidade.fotoPlaceholder}
-                aspect="4/3"
-                tone="dark"
-              />
-            </div>
+            {!isNautico && (
+              <div className="lg:col-span-5">
+                <PhotoPlaceholder
+                  label={modalidade.fotoPlaceholder}
+                  aspect="4/3"
+                  tone="dark"
+                />
+              </div>
+            )}
           </div>
         </div>
       </section>

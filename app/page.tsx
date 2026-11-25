@@ -269,65 +269,72 @@ export default function HomePage() {
       </section>
 
       {/* 5. DESTAQUE NÁUTICO */}
-      <section className="relative overflow-hidden bg-verde-profundo py-16 text-branco sm:py-24">
+      <section className="relative flex min-h-[500px] items-center overflow-hidden bg-verde-escuro py-16 text-branco sm:min-h-[560px] sm:py-24">
+        <Image
+          src="/images/marina-itajai-entardecer.jpg"
+          alt="Marina de Itajaí ao entardecer com lanchas e veleiros atracados em águas calmas"
+          fill
+          sizes="100vw"
+          className="object-cover object-[70%_center] sm:object-center"
+        />
+
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-verde-escuro/55 sm:bg-transparent sm:bg-gradient-to-r sm:from-verde-escuro/95 sm:via-verde-profundo/78 sm:to-verde-profundo/20"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-verde-escuro/70 via-transparent to-verde-escuro/30 sm:hidden"
+        />
+
         <SectionWaves
           variant="gold"
           position="hero"
-          className="absolute inset-x-0 bottom-0 h-52 opacity-80"
+          className="absolute inset-x-0 bottom-0 z-10 h-44 opacity-80 sm:h-52"
         />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-6">
-              <span className="inline-flex items-center gap-2 rounded-full border border-dourado-areia/45 px-3.5 py-1 text-xs font-semibold tracking-widest text-dourado-areia uppercase">
-                <Anchor className="h-3.5 w-3.5" aria-hidden="true" />
-                <span>SEGURO NÁUTICO</span>
-              </span>
+        <div className="relative z-20 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <span className="inline-flex items-center gap-2 rounded-full border border-dourado-areia/55 bg-verde-escuro/70 px-3.5 py-1 text-xs font-semibold tracking-widest text-dourado-areia uppercase backdrop-blur-xs">
+              <Anchor className="h-3.5 w-3.5" aria-hidden="true" />
+              <span>SEGURO NÁUTICO</span>
+            </span>
 
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-branco sm:text-4xl">
-                Da marina à travessia, atenção dedicada a quem vive o mar de
-                Itajaí e Balneário Camboriú
-              </h2>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-branco sm:text-4xl">
+              Da marina à travessia, atenção dedicada a quem vive o mar de
+              Itajaí e Balneário Camboriú
+            </h2>
 
-              <p className="mt-4 text-base font-light italic text-creme/95 sm:text-lg">
-                Lanchas, veleiros, iates e motos aquáticas com orientação de
-                quem conhece a cultura náutica do litoral catarinense.
-              </p>
+            <p className="mt-4 text-base font-light italic text-creme sm:text-lg">
+              Lanchas, veleiros, iates e motos aquáticas com orientação de quem
+              conhece a cultura náutica do litoral catarinense.
+            </p>
 
-              <p className="mt-4 text-sm leading-relaxed text-creme/85 sm:text-base">
-                Estar em um dos principais polos náuticos do Brasil nos permite
-                entender de perto a rotina das marinas, dos passeios de fim de
-                semana e dos cuidados que cada embarcação pede, conforme as
-                condições contratadas.
-              </p>
+            <p className="mt-4 text-sm leading-relaxed text-creme/90 sm:text-base">
+              Estar em um dos principais polos náuticos do Brasil nos permite
+              entender de perto a rotina das marinas, dos passeios de fim de
+              semana e dos cuidados que cada embarcação pede, conforme as
+              condições contratadas.
+            </p>
 
-              <div className="mt-7 flex flex-wrap gap-3">
-                <Link
-                  href="/nautico"
-                  className="inline-flex items-center gap-2 rounded-lg bg-dourado-areia px-6 py-3 text-sm font-bold text-verde-escuro transition-colors hover:bg-creme"
-                >
-                  <span>Conhecer Seguro Náutico</span>
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-                <a
-                  href={buildWhatsAppUrl(
-                    "Olá! Vim pelo site da Zanella Seguros e quero conversar sobre Seguro Náutico."
-                  )}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg border border-dourado-areia/55 px-6 py-3 text-sm font-semibold text-branco transition-colors hover:bg-verde-medio"
-                >
-                  <span>Falar sobre sua embarcação</span>
-                </a>
-              </div>
-            </div>
-
-            <div className="lg:col-span-6">
-              <PhotoPlaceholder
-                label="[FOTO REAL: marina de Itajaí ao entardecer com embarcações atracadas e água calma]"
-                aspect="16/9"
-                tone="dark"
-              />
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link
+                href="/nautico"
+                className="inline-flex items-center gap-2 rounded-lg bg-dourado-areia px-6 py-3 text-sm font-bold text-verde-escuro shadow-sm transition-colors hover:bg-creme"
+              >
+                <span>Conhecer Seguro Náutico</span>
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+              <a
+                href={buildWhatsAppUrl(
+                  "Olá! Vim pelo site da Zanella Seguros e quero conversar sobre Seguro Náutico."
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-dourado-areia/65 bg-verde-escuro/55 px-6 py-3 text-sm font-semibold text-branco backdrop-blur-xs transition-colors hover:bg-verde-profundo"
+              >
+                <span>Falar sobre sua embarcação</span>
+              </a>
             </div>
           </div>
         </div>
