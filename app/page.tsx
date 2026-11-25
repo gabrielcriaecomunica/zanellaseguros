@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Anchor,
@@ -47,69 +48,76 @@ export default function HomePage() {
   return (
     <>
       {/* 1. HERO */}
-      <section className="relative overflow-hidden bg-verde-profundo text-branco">
+      <section className="relative flex min-h-[540px] items-center overflow-hidden bg-verde-escuro text-branco sm:min-h-[600px] lg:min-h-[640px]">
+        <Image
+          src="/images/hero-familia-zanella.jpg"
+          alt="Família brasileira reunida na varanda de casa no litoral ao entardecer"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[74%_center] sm:object-center"
+        />
+
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-verde-escuro/50 sm:bg-transparent sm:bg-gradient-to-r sm:from-verde-escuro/95 sm:via-verde-profundo/75 sm:to-verde-profundo/20"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-verde-escuro/70 via-transparent to-verde-escuro/30 sm:hidden"
+        />
+
         <SectionWaves
           variant="gold"
           position="hero"
-          className="absolute inset-x-0 bottom-0 h-56 opacity-90 sm:h-64"
+          className="absolute inset-x-0 bottom-0 z-10 h-44 opacity-85 sm:h-56"
         />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-            <div className="lg:col-span-7">
-              <span className="inline-block rounded-full border border-dourado-areia/45 bg-verde-escuro/60 px-4 py-1.5 text-xs font-semibold tracking-wider text-dourado-areia uppercase">
-                {EMPRESA.frasesMarca.heroEtiqueta}
-              </span>
+        <div className="relative z-20 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+          <div className="max-w-2xl">
+            <span className="inline-block rounded-full border border-dourado-areia/55 bg-verde-escuro/75 px-4 py-1.5 text-xs font-semibold tracking-wider text-dourado-areia uppercase backdrop-blur-xs">
+              {EMPRESA.frasesMarca.heroEtiqueta}
+            </span>
 
-              <h1 className="mt-6 text-4xl leading-tight font-bold tracking-tight text-branco sm:text-5xl lg:text-[3.35rem]">
-                {EMPRESA.frasesMarca.heroTitulo}
-              </h1>
+            <h1 className="mt-6 text-4xl leading-tight font-bold tracking-tight text-branco sm:text-5xl lg:text-[3.35rem]">
+              {EMPRESA.frasesMarca.heroTitulo}
+            </h1>
 
-              <p className="mt-5 max-w-xl text-lg font-light italic text-creme/95 sm:text-xl">
-                {EMPRESA.frasesMarca.heroApoio}
-              </p>
+            <p className="mt-5 max-w-xl text-lg font-light italic text-creme sm:text-xl">
+              {EMPRESA.frasesMarca.heroApoio}
+            </p>
 
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-creme/80 sm:text-base">
-                Atendimento humano e independente em Itajaí, Balneário Camboriú
-                e todo o Brasil. Conectamos duas gerações da mesma família com a
-                força das principais seguradoras do país.
-              </p>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-creme/90 sm:text-base">
+              Atendimento humano e independente em Itajaí, Balneário Camboriú e
+              todo o Brasil. Conectamos duas gerações da mesma família com a
+              força das principais seguradoras do país.
+            </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-                <a
-                  href={buildWhatsAppUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-dourado-areia px-6 py-3.5 text-sm font-bold text-verde-escuro transition-colors hover:bg-creme"
-                >
-                  <MessageCircle
-                    className="h-4 w-4"
-                    strokeWidth={2}
-                    aria-hidden="true"
-                  />
-                  <span>Conversar com um corretor</span>
-                </a>
-                <Link
-                  href="/seguros"
-                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-dourado-areia/55 px-6 py-3.5 text-sm font-semibold text-branco transition-colors hover:bg-verde-medio"
-                >
-                  <span>Conhecer os seguros</span>
-                  <ArrowRight
-                    className="h-4 w-4 text-dourado-areia"
-                    strokeWidth={1.75}
-                    aria-hidden="true"
-                  />
-                </Link>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5">
-              <PhotoPlaceholder
-                label="[FOTO REAL: Valcir e Amanda Zanella em atendimento consultivo ou no escritório em Itajaí, luz natural]"
-                aspect="4/5"
-                tone="dark"
-                className="mx-auto max-w-md shadow-xl"
-              />
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+              <a
+                href={buildWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-dourado-areia px-6 py-3.5 text-sm font-bold text-verde-escuro shadow-sm transition-colors hover:bg-creme"
+              >
+                <MessageCircle
+                  className="h-4 w-4"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
+                <span>Conversar com um corretor</span>
+              </a>
+              <Link
+                href="/seguros"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-dourado-areia/65 bg-verde-escuro/55 px-6 py-3.5 text-sm font-semibold text-branco backdrop-blur-xs transition-colors hover:bg-verde-profundo"
+              >
+                <span>Conhecer os seguros</span>
+                <ArrowRight
+                  className="h-4 w-4 text-dourado-areia"
+                  strokeWidth={1.75}
+                  aria-hidden="true"
+                />
+              </Link>
             </div>
           </div>
         </div>
