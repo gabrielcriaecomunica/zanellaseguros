@@ -27,11 +27,6 @@ export function SeguradorasSection({
             >
               Principais seguradoras parceiras
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-texto-suave sm:text-base">
-              Por meio da rede {EMPRESA.redeParceira}, comparamos condições entre
-              diferentes companhias para indicar a proteção mais adequada ao seu
-              perfil.
-            </p>
           </div>
         </RevealOnScroll>
 
