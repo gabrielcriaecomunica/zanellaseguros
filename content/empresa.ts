@@ -106,14 +106,20 @@ export const EMPRESA = {
       cargo: "Corretor de Seguros",
       frase:
         "Mais do que apresentar uma apólice, nosso papel é ouvir com atenção para proteger o que cada pessoa construiu.",
-      fotoPlaceholder: "[FOTO REAL: Valcir Zanella no escritório]",
+      foto: "/images/valcir-zanella.jpg",
+      fotoAlt:
+        "Valcir Zanella, corretor de seguros, sorrindo em frente ao logotipo da Zanella Seguros no escritório em Itajaí",
+      fotoPosition: "object-[50%_40%]",
     },
     {
       nome: "Amanda Zanella",
       cargo: "Corretora de Seguros (atua desde 2011)",
       frase:
         "Cresci acompanhando o cuidado do meu pai com cada cliente e trago esse mesmo olhar próximo para os novos desafios de proteção.",
-      fotoPlaceholder: "[FOTO REAL: Amanda Zanella no escritório]",
+      foto: "/images/amanda-zanella.jpg",
+      fotoAlt:
+        "Amanda Zanella, corretora de seguros, em frente ao logotipo da Zanella Seguros no escritório em Itajaí",
+      fotoPosition: "object-[50%_75%]",
     },
   ],
   depoimentosPlaceholders: [

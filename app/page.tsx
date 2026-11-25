@@ -14,6 +14,7 @@ import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SegurosTabs } from "@/components/SegurosTabs";
 import { Timeline } from "@/components/Timeline";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
+import { CorretorCard } from "@/components/CorretorCard";
 import { CTASection } from "@/components/CTASection";
 
 const PASSOS_CONSULTIVOS = [
@@ -392,25 +393,7 @@ export default function HomePage() {
           <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2">
             {EMPRESA.corretores.map((corretor, index) => (
               <RevealOnScroll key={corretor.nome} delayMs={index * 80}>
-                <article className="flex flex-col gap-6 rounded-2xl border border-borda-sutil bg-creme-suave p-6 sm:flex-row sm:items-center">
-                  <div className="w-full shrink-0 sm:w-44">
-                    <PhotoPlaceholder
-                      label={corretor.fotoPlaceholder}
-                      aspect="4/5"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-verde-profundo">
-                      {corretor.nome}
-                    </h3>
-                    <p className="mt-1 text-xs font-semibold tracking-wider text-texto-suave uppercase">
-                      {corretor.cargo}
-                    </p>
-                    <p className="mt-4 text-sm leading-relaxed font-light italic text-texto">
-                      &ldquo;{corretor.frase}&rdquo;
-                    </p>
-                  </div>
-                </article>
+                <CorretorCard {...corretor} tone="cream" />
               </RevealOnScroll>
             ))}
           </div>
