@@ -22,9 +22,9 @@ export const EMPRESA = {
     completo:
       "Av. Getúlio Vargas, 193, Sala 07, Vila Operária, Itajaí/SC, CEP 88303-220",
     mapsEmbedUrl:
-      "https://www.google.com/maps?q=Av.+Get%C3%BAlio+Vargas,+193,+Vila+Oper%C3%A1ria,+Itaja%C3%AD+-+SC,+88303-220&output=embed",
+      "https://maps.google.com/maps?hl=pt-BR&q=Av.+Get%C3%BAlio+Vargas,+193,+Vila+Oper%C3%A1ria,+Itaja%C3%AD+-+SC,+88303-220+(Zanella+Seguros)&t=m&z=17&ie=UTF8&iwloc=B&output=embed",
     mapsLink:
-      "https://www.google.com/maps/search/?api=1&query=Av.+Get%C3%BAlio+Vargas,+193,+Sala+07,+Vila+Oper%C3%A1ria,+Itaja%C3%AD,+SC,+88303-220",
+      "https://www.google.com/maps/search/?api=1&query=Zanella+Seguros,+Av.+Get%C3%BAlio+Vargas,+193,+Sala+07,+Vila+Oper%C3%A1ria,+Itaja%C3%AD,+SC,+88303-220",
   },
   horarioAtendimento: "[CONFIRMAR HORÁRIO DE ATENDIMENTO COM A ZANELLA]",
   redes: {

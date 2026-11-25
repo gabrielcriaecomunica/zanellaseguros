@@ -16,6 +16,7 @@ import { Timeline } from "@/components/Timeline";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { CorretorCard } from "@/components/CorretorCard";
 import { SeguradorasSection } from "@/components/SeguradorasSection";
+import { LocalizacaoSection } from "@/components/LocalizacaoSection";
 import { CTASection } from "@/components/CTASection";
 
 const PASSOS_CONSULTIVOS = [
@@ -451,7 +452,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9. CTA FINAL */}
+      {/* 9. LOCALIZAÇÃO NO GOOGLE MAPS */}
+      <LocalizacaoSection />
+
+      {/* 10. CTA FINAL */}
       <CTASection />
     </>
   );
