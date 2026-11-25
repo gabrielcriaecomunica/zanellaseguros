@@ -1,8 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import { MessageCircle, Phone } from "lucide-react";
+import { Mail, MessageCircle, Phone } from "lucide-react";
 import { EMPRESA, buildWhatsAppUrl } from "@/content/empresa";
 import { SectionWaves } from "@/components/SectionWaves";
+
+const GOLD_BUTTON_CLASS =
+  "inline-flex w-full items-center justify-center gap-2 rounded-lg bg-dourado-areia px-6 py-3.5 text-sm font-bold text-verde-escuro transition-colors hover:bg-creme sm:w-auto";
 
 interface CTASectionProps {
   title?: string;
@@ -42,23 +45,18 @@ export function CTASection({
             href={buildWhatsAppUrl(whatsappMessage)}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-dourado-areia px-6 py-3.5 text-sm font-bold text-verde-escuro transition-colors hover:bg-creme sm:w-auto"
+            className={GOLD_BUTTON_CLASS}
           >
             <MessageCircle className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
             <span>Conversar com um corretor</span>
           </a>
-          <a
-            href={EMPRESA.telefoneHref}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-dourado-areia/50 px-6 py-3.5 text-sm font-semibold text-branco transition-colors hover:bg-verde-medio sm:w-auto"
-          >
-            <Phone className="h-4 w-4 text-dourado-areia" strokeWidth={1.75} aria-hidden="true" />
+          <a href={EMPRESA.telefoneHref} className={GOLD_BUTTON_CLASS}>
+            <Phone className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
             <span>{EMPRESA.telefone}</span>
           </a>
-          <Link
-            href={secondaryHref}
-            className="inline-flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-medium text-creme underline decoration-dourado-areia/60 underline-offset-4 transition-colors hover:text-branco sm:w-auto"
-          >
-            {secondaryLabel}
+          <Link href={secondaryHref} className={GOLD_BUTTON_CLASS}>
+            <Mail className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+            <span>{secondaryLabel}</span>
           </Link>
         </div>
       </div>
