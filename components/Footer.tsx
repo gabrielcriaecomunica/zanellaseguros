@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { EMPRESA, buildWhatsAppUrl } from "@/content/empresa";
-import { MODALIDADES_SEGURO } from "@/content/seguros";
 import { SectionWaves } from "@/components/SectionWaves";
 import { CopyrightYear } from "@/components/CopyrightYear";
 
@@ -17,7 +16,7 @@ export function Footer() {
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 pt-14 pb-10 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 border-b border-dourado-areia/20 pb-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-10 border-b border-dourado-areia/20 pb-12 md:grid-cols-2 lg:grid-cols-3">
           <div className="space-y-4">
             <Link href="/" className="inline-flex items-center gap-3">
               <Image
@@ -105,60 +104,6 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h2 className="text-xs font-bold tracking-wider text-dourado-areia uppercase">
-              Modalidades
-            </h2>
-            <ul className="mt-4 grid grid-cols-1 gap-2 text-sm sm:grid-cols-2 lg:hidden">
-              {MODALIDADES_SEGURO.map((item) => (
-                <li key={item.slug}>
-                  <Link
-                    href={
-                      item.slug === "nautico"
-                        ? "/nautico"
-                        : `/seguros/${item.slug}`
-                    }
-                    className="text-creme/90 hover:text-branco hover:underline"
-                  >
-                    {item.nome}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <ul className="mt-4 hidden space-y-2.5 text-sm lg:block">
-              {MODALIDADES_SEGURO.filter((item) =>
-                [
-                  "automovel",
-                  "residencial",
-                  "vida",
-                  "empresarial",
-                  "nautico",
-                ].includes(item.slug)
-              ).map((item) => (
-                <li key={item.slug}>
-                  <Link
-                    href={
-                      item.slug === "nautico"
-                        ? "/nautico"
-                        : `/seguros/${item.slug}`
-                    }
-                    className="text-creme/90 hover:text-branco hover:underline"
-                  >
-                    {item.nome}
-                  </Link>
-                </li>
-              ))}
-              <li className="pt-1">
-                <Link
-                  href="/seguros"
-                  className="font-semibold text-dourado-areia underline decoration-dourado-areia/50 underline-offset-4 hover:text-branco"
-                >
-                  Ver todos os seguros
-                </Link>
-              </li>
-            </ul>
-          </div>
-
           <div className="space-y-4">
             <h2 className="text-xs font-bold tracking-wider text-dourado-areia uppercase">
               Contato e endereço
@@ -213,7 +158,7 @@ export function Footer() {
 
             <div className="pt-2">
               <p className="text-xs font-semibold tracking-wider text-dourado-areia uppercase">
-                Redes e arquivo
+                Redes sociais
               </p>
               <div className="mt-2 flex flex-wrap gap-3 text-sm">
                 <a
@@ -231,14 +176,6 @@ export function Footer() {
                   className="underline decoration-dourado-areia/50 underline-offset-4 hover:text-branco"
                 >
                   Facebook
-                </a>
-                <a
-                  href={EMPRESA.redes.blogAntigo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline decoration-dourado-areia/50 underline-offset-4 hover:text-branco"
-                >
-                  Arquivo do blog anterior
                 </a>
               </div>
             </div>
