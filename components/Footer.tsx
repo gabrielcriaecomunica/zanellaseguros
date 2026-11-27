@@ -184,7 +184,8 @@ export function Footer() {
 
         <div className="mt-8 flex flex-col gap-3 text-xs text-creme/80 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © <CopyrightYear /> Zanella Seguros. Todos os direitos reservados.
+            © <CopyrightYear /> por Cria e Comunica para Zanella Seguros. Todos
+            os direitos reservados.
           </p>
           <p>Registro SUSEP: {EMPRESA.susep}</p>
         </div>
