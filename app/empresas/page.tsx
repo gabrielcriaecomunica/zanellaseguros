@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -13,7 +14,6 @@ import { EMPRESA, buildWhatsAppUrl } from "@/content/empresa";
 import { getModalidadesByPerfil } from "@/content/seguros";
 import { SectionWaves } from "@/components/SectionWaves";
 import { InsuranceCard } from "@/components/InsuranceCard";
-import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { CTASection } from "@/components/CTASection";
 
 export const metadata: Metadata = {
@@ -91,11 +91,16 @@ export default function EmpresasPage() {
             </div>
 
             <div className="lg:col-span-5">
-              <PhotoPlaceholder
-                label="[FOTO: reunião consultiva em empresa brasileira ou área comercial/portuária de Itajaí]"
-                aspect="4/3"
-                tone="dark"
-              />
+              <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-dourado-areia/30 bg-verde-escuro shadow-xl">
+                <Image
+                  src="/images/empresas-reuniao-itajai.jpg"
+                  alt="Reunião consultiva entre corretor e empresários em escritório com vista para a área portuária de Itajaí"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
