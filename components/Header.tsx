@@ -15,14 +15,41 @@ export function Header() {
   const [mobileOpenPath, setMobileOpenPath] = useState<string | null>(null);
   const [mobileSegurosOpen, setMobileSegurosOpen] = useState(false);
   const megaContainerRef = useRef<HTMLDivElement>(null);
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const megaOpen = megaOpenPath === pathname;
   const mobileOpen = mobileOpenPath === pathname;
 
+  const openMegaMenu = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setMegaOpenPath(pathname);
+  };
+
+  const scheduleCloseMegaMenu = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+    closeTimeoutRef.current = setTimeout(() => {
+      setMegaOpenPath(null);
+      closeTimeoutRef.current = null;
+    }, 180);
+  };
+
+  const closeMegaMenuNow = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setMegaOpenPath(null);
+  };
+
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setMegaOpenPath(null);
+        closeMegaMenuNow();
         setMobileOpenPath(null);
       }
     };
@@ -31,7 +58,7 @@ export function Header() {
         megaContainerRef.current &&
         !megaContainerRef.current.contains(e.target as Node)
       ) {
-        setMegaOpenPath(null);
+        closeMegaMenuNow();
       }
     };
     window.addEventListener("keydown", onKeyDown);
@@ -39,6 +66,9 @@ export function Header() {
     return () => {
       window.removeEventListener("keydown", onKeyDown);
       document.removeEventListener("mousedown", onClickOutside);
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
     };
   }, []);
 
@@ -86,8 +116,8 @@ export function Header() {
           <div
             ref={megaContainerRef}
             className="relative"
-            onMouseEnter={() => setMegaOpenPath(pathname)}
-            onMouseLeave={() => setMegaOpenPath(null)}
+            onMouseEnter={openMegaMenu}
+            onMouseLeave={scheduleCloseMegaMenu}
           >
             <button
               type="button"
@@ -96,7 +126,7 @@ export function Header() {
               onClick={() =>
                 setMegaOpenPath((prev) => (prev === pathname ? null : pathname))
               }
-              className={`inline-flex items-center gap-1 text-sm font-medium transition-colors hover:text-verde-profundo ${
+              className={`inline-flex cursor-pointer items-center gap-1 py-2 text-sm font-medium transition-colors hover:text-verde-profundo ${
                 pathname.startsWith("/seguros")
                   ? "text-verde-profundo underline decoration-verde-profundo/50 underline-offset-4"
                   : "text-texto-suave"
@@ -114,72 +144,84 @@ export function Header() {
 
             {megaOpen && (
               <div
-                id="mega-menu-seguros"
-                className="absolute top-full left-1/2 z-50 mt-3 w-[760px] -translate-x-1/2 rounded-2xl border border-borda-sutil bg-branco p-6 shadow-xl"
+                onMouseEnter={openMegaMenu}
+                onMouseLeave={scheduleCloseMegaMenu}
+                className="absolute top-full left-1/2 z-50 w-[760px] -translate-x-1/2 pt-2"
               >
-                <div className="mb-4 flex items-center justify-between border-b border-borda-sutil pb-3">
-                  <div>
-                    <p className="text-xs font-semibold tracking-wider text-verde-profundo uppercase">
-                      Soluções de proteção
-                    </p>
-                    <p className="text-xs text-texto-suave">
-                      Atendimento consultivo com as principais seguradoras pela rede{" "}
-                      {EMPRESA.redeParceira}
-                    </p>
+                <div
+                  id="mega-menu-seguros"
+                  className="rounded-2xl border border-borda-sutil bg-branco p-6 shadow-xl"
+                >
+                  <div className="mb-4 flex items-center justify-between border-b border-borda-sutil pb-3">
+                    <div>
+                      <p className="text-xs font-semibold tracking-wider text-verde-profundo uppercase">
+                        Soluções de proteção
+                      </p>
+                      <p className="text-xs text-texto-suave">
+                        Atendimento consultivo com as principais seguradoras pela rede{" "}
+                        {EMPRESA.redeParceira}
+                      </p>
+                    </div>
+                    <Link
+                      href="/seguros"
+                      onClick={closeMegaMenuNow}
+                      className="rounded-lg bg-creme px-3 py-1.5 text-xs font-semibold text-verde-profundo transition-colors hover:bg-verde-profundo hover:text-branco"
+                    >
+                      Ver todas as modalidades
+                    </Link>
                   </div>
-                  <Link
-                    href="/seguros"
-                    className="rounded-lg bg-creme px-3 py-1.5 text-xs font-semibold text-verde-profundo transition-colors hover:bg-verde-profundo hover:text-branco"
-                  >
-                    Ver todas as modalidades
-                  </Link>
-                </div>
 
-                <div className="grid grid-cols-3 gap-6">
-                  {PERFIS_SEGURO.filter((p) => p.id !== "planejamento").map(
-                    (perfil) => {
-                      const lista = getModalidadesByPerfil(perfil.id);
-                      const consorcios =
-                        perfil.id === "mar"
-                          ? getModalidadesByPerfil("planejamento")
-                          : [];
-                      const combinados = [...lista, ...consorcios];
+                  <div className="grid grid-cols-3 gap-6">
+                    {PERFIS_SEGURO.filter((p) => p.id !== "planejamento").map(
+                      (perfil) => {
+                        const lista = getModalidadesByPerfil(perfil.id);
+                        const consorcios =
+                          perfil.id === "mar"
+                            ? getModalidadesByPerfil("planejamento")
+                            : [];
+                        const combinados = [...lista, ...consorcios];
 
-                      return (
-                        <div key={perfil.id}>
-                          <p className="mb-2.5 text-xs font-bold tracking-wider text-verde-profundo uppercase">
-                            {perfil.id === "mar"
-                              ? "Para o mar e conquistas"
-                              : perfil.titulo}
-                          </p>
-                          <ul className="space-y-1.5">
-                            {combinados.map((item) => (
-                              <li key={item.slug}>
-                                <Link
-                                  href={
-                                    item.slug === "nautico"
-                                      ? "/nautico"
-                                      : `/seguros/${item.slug}`
-                                  }
-                                  className="group flex items-center gap-2.5 rounded-lg px-2 py-1.5 text-sm text-texto transition-colors hover:bg-creme"
-                                >
-                                  <span className="text-verde-profundo">
-                                    <ModalidadeIcon
-                                      name={item.icone}
-                                      className="h-4 w-4"
-                                    />
-                                  </span>
-                                  <span className="font-medium group-hover:text-verde-profundo">
-                                    {item.nomeCurto}
-                                  </span>
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      );
-                    }
-                  )}
+                        return (
+                          <div key={perfil.id}>
+                            <Link
+                              href={`/seguros#${perfil.id}`}
+                              onClick={closeMegaMenuNow}
+                              className="mb-2.5 inline-block text-xs font-bold tracking-wider text-verde-profundo uppercase hover:underline"
+                            >
+                              {perfil.id === "mar"
+                                ? "Para o mar e conquistas"
+                                : perfil.titulo}
+                            </Link>
+                            <ul className="space-y-1.5">
+                              {combinados.map((item) => (
+                                <li key={item.slug}>
+                                  <Link
+                                    href={
+                                      item.slug === "nautico"
+                                        ? "/nautico"
+                                        : `/seguros/${item.slug}`
+                                    }
+                                    onClick={closeMegaMenuNow}
+                                    className="group flex items-center gap-2.5 rounded-lg px-2 py-1.5 text-sm text-texto transition-colors hover:bg-creme"
+                                  >
+                                    <span className="text-verde-profundo">
+                                      <ModalidadeIcon
+                                        name={item.icone}
+                                        className="h-4 w-4"
+                                      />
+                                    </span>
+                                    <span className="font-medium group-hover:text-verde-profundo">
+                                      {item.nomeCurto}
+                                    </span>
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        );
+                      }
+                    )}
+                  </div>
                 </div>
               </div>
             )}
