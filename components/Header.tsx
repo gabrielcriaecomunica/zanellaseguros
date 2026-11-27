@@ -58,7 +58,7 @@ export function Header() {
           aria-label="Zanella Seguros, página inicial"
         >
           <Image
-            src="/images/logo-zanella.png"
+            src="/images/simbolo-zanella.png"
             alt="Zanella Seguros"
             width={44}
             height={44}
